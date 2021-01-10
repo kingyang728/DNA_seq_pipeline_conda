@@ -42,6 +42,7 @@ rule all:
         
         filtered_vcf = expand(SAMPLE_OUTPUT_DIR + "/filterd_calls/{sample_name}_{sample_num}.vcf.gz",sample_name=SAMPLE_NAME_SET, sample_num = SAMPLE_NUM_SET),
         sv_vcf = expand(SAMPLE_OUTPUT_DIR + "/lumpySV/{sample_name}_{sample_num}.vcf",sample_name=SAMPLE_NAME_SET, sample_num = SAMPLE_NUM_SET),
+        cnv_csv = expand(SAMPLE_OUTPUT_DIR + "/CNV/{sample_name}_{sample_num}.csv",sample_name=SAMPLE_NAME_SET, sample_num = SAMPLE_NUM_SET),
         # PON_VCF_final = "PON_VCF/gatk4_mutect2_pon_generated.vcf.gz",
         
         # recal_bam = expand(SAMPLE_OUTPUT_DIR + "/recal/{sample_name}_{sample_num}.bam",sample_name=SAMPLE_NAME_SET, sample_num = SAMPLE_NUM_SET),
@@ -526,3 +527,19 @@ rule lumpy_SV:
         "-D {input.discordants_bam} "
         "-o {output.sv_vcf}"
 ################################
+############### CNV detect
+rule panelcn_mop:
+    input:
+        input_bam = SAMPLE_OUTPUT_DIR + "/recal/{sample}.bam",
+        control_bam = config["NA12878_controlbam"],
+        bed_file = config["hg38gene_bed"],
+        # splitread_bam = SAMPLE_OUTPUT_DIR+"/lumpySV/{sample}.splitters.bam"
+    output:
+        cnv_output = SAMPLE_OUTPUT_DIR + "/CNV/{sample}.csv"
+    conda:
+        "envs/panelcnmop.yaml"
+    shell:
+        "Rscript Scripts/CNV_detect.r -i {input.input_bam} "
+        "-c {input.control_bam} "
+        "-b {input.bed_file} "
+        "-o {output.cnv_output}"
