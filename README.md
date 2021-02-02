@@ -41,11 +41,11 @@ Activate the snakemake environment using conda:
 
 #### Step 6: Run DNA-seq pipeline
 
-1. Dry run pipeline to check the process steps and availabilities:
+Dry run pipeline to check the process steps and availabilities:
 
     snakemake -j all -n --use-conda
 
-2. Run pipeline:
+Run pipeline:
 
     snakemake -j all --use-conda
 
