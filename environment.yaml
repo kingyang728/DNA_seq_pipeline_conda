@@ -1,6 +1,0 @@
-name: test
-channels:
-  - conda-forge
-  - bioconda
-  - defaults
-prefix: /home/kingyang/miniconda3/envs/test
