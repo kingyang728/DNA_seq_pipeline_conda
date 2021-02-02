@@ -1,0 +1,56 @@
+## config file use space insead of tab！
+groups:
+  # "DNA-HD753-50ng": [DNA-HD753-50ng_S8_L001,DNA-HD753-50ng_S8_L002]
+samples:
+  "DNA-21535-100ng_test": ["data/samples/DNA-21535-100ng_test.R1.fastq","data/samples/DNA-21535-100ng_test.R2.fastq"]
+  # "DNA-HD753-50ng_S8_L001": ["data/samples/DNA-HD753-50ng_S8_L001_R1_test.fastq","data/samples/DNA-HD753-50ng_S8_L001_R2_test.fastq"]
+  # "DNA-HD753-50ng_S8_L002": ["data/samples/DNA-HD753-50ng_S8_L002_R1_test.fastq","data/samples/DNA-HD753-50ng_S8_L002_R2_test.fastq"]
+  
+
+  # "DNA-21535-100ng_S4_L001_R1_001_test": ["/home/kingyang/harddisk/SSH_server_Data/Fastq_test/DNA-21535-100ng_S4_L001_R1_001_test.fastq.gz"]
+
+
+##### set raw fastq data located directory below:  
+input_dir: /sybig/home/jiy/Downloads/Snakemake_pipeline/DNA_Seq_workflow_conda/Fastq_test
+
+
+############control raw fastq dir
+# input_dir: /media/kingyang/Jing_Disk/Muenster/TSO500_Training-141986848/DNA-HD753-50ng-193700588/DNA-HD753-50ng-ds.410b8838d1464b94b60c1e732bf141ff
+
+# input_dir: /media/kingyang/Jing_Disk/Muenster/TSO500_Training-141986848/DNA-HD753-100ng-193700567/DNA-HD753-100ng-ds.25a517affa5e427b91429c9587faa08d
+
+
+# input_dir: /media/kingyang/Jing_Disk/Muenster/TSO500_Training-141986848/DNA-21930-100ng-193621438/DNA-21930-100ng-ds.d2b3a3117f944ab0b1f561895eaf95b2
+# input_dir: /media/kingyang/Jing_Disk/Muenster/TSO500_Training-141986848/DNA-21535-100ng-193602487/DNA-21535-100ng-ds.4d9296234b0b401195d730376de00726
+# input_dir: /media/kingyang/Jing_Disk/Muenster/TSO500_Training-141986848/DNA-18594-100ng-193733574/DNA-18594-100ng-ds.757bc13eda2b4d3884fff930a842a9ce
+
+# input_dir: /home/kingyang/harddisk/SSH_server_Data/Fastq_Data
+output_dir: Output
+
+genome_link: https://api.gdc.cancer.gov/data/254f697d-310d-4d7d-a27b-27fbf767a834
+BWA_Index: https://api.gdc.cancer.gov/data/25217ec9-af07-4a17-8db9-101271ee7225
+GATK_Index: https://api.gdc.cancer.gov/data/2c5730fb-0909-4e2a-8a7a-c9a7f8b2dad5 
+
+genome_dir: Ref_data
+#genome_dir: /home/kingyang/harddisk/VariantWorkFlow/Fasta_Index
+
+know_dbsnp_vcf: Ref_data/resources_broad_hg38_v0_Homo_sapiens_assembly38.dbsnp138.vcf
+interval_list: Ref_data/resources_broad_hg38_v0_wgs_calling_regions.hg38.interval_list
+
+gatk_germline_resource: Ref_data/somatic-hg38_af-only-gnomad.hg38.vcf.gz
+gatk_panel_of_normal: Ref_data/somatic-hg38_1000g_pon.hg38.vcf.gz
+#hg38_intervals: "/home/kingyang/harddisk/SSH_server_Data/GATK_Data/hg38_RefSeq.bed"
+
+
+exac_common_knownsite: Ref_data/somatic-hg38_small_exac_common_3.hg38.vcf.gz
+
+
+PON_samples:
+  DNA-HD753-100ng_S7: /home/kingyang/harddisk/SSH_server_Data/snakemake_pipeline/snakemake_DNA_seq_pipeline/Output/DNA-HD753-100ng_S7_001/recal/DNA-HD753-100ng_S7.bam
+  DNA-HD753-50ng_S8: /home/kingyang/harddisk/SSH_server_Data/snakemake_pipeline/snakemake_DNA_seq_pipeline/Output/DNA-HD753-50ng_S8_001/recal/DNA-HD753-50ng_S8.bam
+
+NA12878_controlbam: control_bam/NA12878.exome.bam
+hg38gene_bed: control_bam/genesHG38.bed
+
+params:
+  genome_name: "GRCh38.d1.vd1"
