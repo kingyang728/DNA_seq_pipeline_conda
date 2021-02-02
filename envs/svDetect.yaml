@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python = 2.7
+  - lumpy-sv
+  - samtools =1.10
